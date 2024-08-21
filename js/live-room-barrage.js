@@ -5,7 +5,7 @@ if (cookie_value("DedeUserID") == false) {
     $(function () {
         const configuration = {
             "alpha":"80",//16进制
-            "INTERACT_WORD":1,
+            "INTERACT_WORD":0,
             "ENTRY_EFFECT":1,
             "DANMU_MSG":1,
             "user_face":"display: none;",
@@ -21,7 +21,7 @@ if (cookie_value("DedeUserID") == false) {
             $.ajax({
                 type: "get",
                 url: "https://api.live.bilibili.com/room/v1/Room/playUrl",
-                data: "cid="+url_parameters_value("roomid")+"&platform=web&qu=10000",
+                data: "cid="+url_parameters_value("roomid")+"&platform=web&quality=4",
                 dataType: "json",
                 xhrFields: {
                     withCredentials: true
@@ -40,7 +40,7 @@ if (cookie_value("DedeUserID") == false) {
                 let durl = $.ajax({
                     type: "get",
                     url: "https://api.live.bilibili.com/room/v1/Room/playUrl",
-                    data: "cid="+url_parameters_value("roomid")+"&platform=web&qu=10000",
+                    data: "cid="+url_parameters_value("roomid")+"&platform=web&quality=4",
                     dataType: "json",
                     xhrFields: {
                         withCredentials: true
