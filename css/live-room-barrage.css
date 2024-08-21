@@ -31,6 +31,11 @@ body{
     align-items: center;
     margin-left: 15px;
 }
+.live_user p{
+    display: flex;
+    position: relative;
+    font-size: 14px;
+}
 .live_user img{
     display: flex;
     position: relative;
@@ -45,18 +50,13 @@ body{
     display: flex;
     position: relative;
     color: #ffffffb0;
-    margin: 0px 10px;
+    margin-left: 10px;
 }
 .clock{
     display: flex;
     position: relative;
     color: #ffffffb0;
     margin-right: 15px;
-}
-.push_barrage{
-    display: flex;
-    position: relative;
-    color: #ffffff80;
 }
 .push_barrage_text{
     display: flex;
@@ -91,13 +91,13 @@ body{
     box-shadow: 0px 0px 3px #000000ff;
     overflow: auto;
 }
-.INTERACT_WORD{
+.INTERACT_WORD,.DANMU_MSG{
     display: flex;
     position: relative;
     align-items: center;
     margin: 10px;
 }
-.INTERACT_WORD img{
+.INTERACT_WORD img,.DANMU_MSG img{
     height: 32px;
     border-radius: 50px;
     -webkit-border-radius: 50px;
@@ -125,10 +125,15 @@ body{
     -ms-border-radius: 5px 5px 0px 0px;
     -o-border-radius: 5px 5px 0px 0px;
 }
+.time{
+    display: flex;
+    position: relative;
+    font-size: 8px;
+    margin-left: auto;
+}
 .medal{
     display: flex;
     position: relative;
-    align-items: center;
     color: #ffffffff;
     border: solid 2px;
     border-radius: 50px 0px 0px 50px;
@@ -143,9 +148,11 @@ body{
 }
 .medal p{
     display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     margin-left: 3px;
-    font-size: 0.5em;
+    font-size: 10px;
 }
 .medal_level{
     background-color: #ffffffff;
@@ -154,6 +161,7 @@ body{
     display: flex;
     position: relative;
     margin-left: 5px;
+    font-size: 0.5em;
 }
 .text{
     display: flex;

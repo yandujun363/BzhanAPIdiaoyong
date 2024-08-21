@@ -7,6 +7,8 @@
     <script src="lib/jquery-migrate-1.4.1.js"></script>
     <script src="lib/decode.js"></script>
     <script src="lib/spark-md5.js"></script>
+    <script src="/lib/base64.js"></script>
+    <script src="/lib/clipboard.js"></script>
     <script src="/lib/lib.js"></script>
     <script src="/js/live-room-barrage.js"></script>
     <link rel="stylesheet" href="/css/live-room-barrage.css">
@@ -20,11 +22,11 @@
             </a>
             <p class="online_count_text"></p>
             <p class="text_large"></p>
+            <p class="click_count"></p>
+            <p class="durl">直播间视频流地址</p>
+            <p class="browser_play">游览器播放</p>
         </div>
-        <div class="push_barrage">
-            <input type="text" class="push_barrage_text" maxlength="20" placeholder="Enter发送">
-            <p class="push_barrage_code"></p>
-        </div>
+        <input type="text" class="push_barrage_text" maxlength="20" placeholder="Enter发送">
         <div class="clock"></div>
     </div>
     <div class="module">
