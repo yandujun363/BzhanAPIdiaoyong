@@ -3,21 +3,21 @@ if (cookie_value("DedeUserID") == false) {
     window.location.replace("/login.html")
 } else {
     $(function () {
-        const configuration = {
+        const configuration = {//配置
             "alpha":"80",//16进制
-            "INTERACT_WORD":0,
-            "ENTRY_EFFECT":1,
-            "DANMU_MSG":1,
-            "user_face":"display: none;",
-            "tiem":"display: none;"
+            "INTERACT_WORD":1,//是否显示进场或关注信息
+            "ENTRY_EFFECT":1,//是否显示进场特效
+            "DANMU_MSG":1,//是否显示弹幕
+            "user_face":"display: none;",//是否显示用户头像
+            "tiem":"display: none;"//是否显示触发时间
         }
-        function clock() {
+        function clock() {//时钟
             let time = new Date().toLocaleDateString() + "|" + new Date().toTimeString().split(" ")[0]
             $(".clock").text(time)
             setTimeout(clock,1000)
         }
         clock()
-        $(".browser_play").click(function (e) { 
+        $(".browser_play").click(function (e) {//游览器播放
             $.ajax({
                 type: "get",
                 url: "https://api.live.bilibili.com/room/v1/Room/playUrl",
@@ -35,7 +35,7 @@ if (cookie_value("DedeUserID") == false) {
                 }
             })
         })
-        new ClipboardJS(".durl",{
+        new ClipboardJS(".durl",{//获取直播视频流地址
             text: function () {
                 let durl = $.ajax({
                     type: "get",
@@ -55,14 +55,14 @@ if (cookie_value("DedeUserID") == false) {
         }).on("error", function(e) {
             alert("复制失败");
         });
-        $(".live_user_room").attr({
+        $(".live_user_room").attr({//目标直播间地址
             "href":"https://live.bilibili.com/"+url_parameters_value("roomid")+"/"
         })
-        $(".live_user_image").attr({
+        $(".live_user_image").attr({//主播头像
             "src": url_parameters_value("face"),
             "title": url_parameters_value("name")+" "+url_parameters_value("roomid")
         })
-        $("body").css({
+        $("body").css({//背景图
             "background-image":"url("+url_parameters_value("user_cover")+")"
         })
         $(".push_barrage_text").keydown(function (event) {//发送弹幕
@@ -92,17 +92,17 @@ if (cookie_value("DedeUserID") == false) {
         })
         function barrage() {
             webSocket()
-            on("ONLINE_RANK_COUNT",function (e) {
+            on("ONLINE_RANK_COUNT",function (e) {//获取当前同接
                 let JSON = e
                 let online_count = JSON.data.online_count
                 $(".online_count_text").text("当前同接："+online_count);
             })
-            on("WATCHED_CHANGE",function (e) {
+            on("WATCHED_CHANGE",function (e) {//显示看过人数
                 let JSON = e
                 let text_large = JSON.data.text_large
                 $(".text_large").text(text_large);
             })
-            on("LIKE_INFO_V3_UPDATE",function (e) {
+            on("LIKE_INFO_V3_UPDATE",function (e) {//显示当前点赞量
                 let JSON = e
                 let click_count = JSON.data.click_count
                 $(".click_count").text(click_count+"点赞");
