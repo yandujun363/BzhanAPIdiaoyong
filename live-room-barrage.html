@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>直播间弹幕</title>
+    <link rel="stylesheet" href="/css/live-room-barrage.css">
+</head>
+<body>
+    <div class="top_bar">
+        <div>
+            <p class="config">配置</p>
+            <a class="live_room_user" target="_blank">
+                <img src="/img/akari.jpg">
+            </a>
+            <p class="ONLINE_RANK_COUNT">当前同接：获取中</p>
+            <p class="browser_play">使用游览器播放</p>
+        </div>
+        <p class="clock"></p>
+    </div>
+    <div class="models">
+        <div class="进场事件"></div>
+        <div class="弹幕事件"></div>
+        <div class="礼物事件"></div>
+    </div>
+    <div class="config_value">
+        <p class="是否开启自动滚动">是否开启自动滚动:是</p>
+        <p class="是否显示背景">是否显示背景:是</p>
+        <p class="是否显示头像">是否显示头像:是</p>
+        <p class="进场事件显示数量">进场事件显示数量:
+            <input type="text">
+        </p>
+        <p class="进场事件(特效)显示数量">进场事件(特效)显示数量:
+            <input type="text">
+        </p>
+        <p class="弹幕事件显示数量">弹幕事件显示数量:
+            <input type="text">
+        </p>
+    </div>
+</body>
+    <script src="/lib/jquery-3.7.1.js"></script>
+    <script src="/lib/jquery-migrate-1.4.1.js"></script>
+    <script src="/lib/spark-md5.js"></script>
+    <script src="/lib/decode.js"></script>
+    <script src="/lib/base64.js"></script>
+    <script src="/lib/clipboard.js"></script>
+    <script src="/lib/lib.js"></script>
+    <script src="/js/live-room-barrage.js"></script>
+</html>

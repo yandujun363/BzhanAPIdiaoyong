@@ -2,6 +2,11 @@
     margin: 0px;
     padding: 0px;
 }
+html,body{
+    background: #654ea3;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #eaafc8, #654ea3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+}
 body{
     display: flex;
     position: absolute;
@@ -55,9 +60,9 @@ body{
     display: flex;
     position: relative;
     margin: 5px;
-    color: #00000080;
+    color: #ffffffff;
     text-decoration: none;
 }
 .module a:hover{
-    color: #0000ff;
+    color: #00aaffff;
 }

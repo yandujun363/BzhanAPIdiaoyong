@@ -6,6 +6,7 @@ if (cookie_value("DedeUserID") == false) {
         let roomid = $(".roomid").val();
         if (roomid != "") {
             if (/^[0-9]{1,}$/g.test(roomid) == true) {
+                $(".content p").text("加载中...");
                 $.ajax({
                     type: "get",
                     url: "https://api.live.bilibili.com/room/v1/Room/get_info",
@@ -31,24 +32,32 @@ if (cookie_value("DedeUserID") == false) {
                                             url: "https://api.live.bilibili.com/xlive/web-room/v1/index/getDanmuInfo",
                                             data: "id="+live_room_data.data.room_id,
                                             dataType: "json",
+                                            xhrFields: {
+                                                withCredentials: true
+                                            },
                                             success: function (live_room_key_data) {
                                                 if (live_room_key_data.code == 0) {
-                                                    window.location.href="/live-room-barrage.html?"+encodeURIComponent("name="+live_user_data.data.name+"&face="+live_user_data.data.face+"&user_cover="+live_room_data.data.user_cover+"&roomid="+roomid+"&key="+live_room_key_data.data.token)
+                                                    $(".content p").text("加载完成!");
+                                                    window.location.href="/live-room-barrage.html?"+encodeURI("name="+live_user_data.data.name+"&face="+live_user_data.data.face+"&user_cover="+live_room_data.data.user_cover+"&roomid="+live_room_data.data.room_id+"&key="+live_room_key_data.data.token)
+                                                    setTimeout(function(){$(".content p").text("")},500)
                                                 } else {
                                                     alert("线程\"live_room_key_data\"GET错误\n错误信息:"+live_room_key_data.message)
                                                     $(".roomid").val("");
+                                                    $(".content p").text("加载错误!");
                                                 }
                                             }
                                         });
                                     } else {
                                         alert("线程\"live_user_data\"GET错误\n错误信息:"+live_user_data.message)
                                         $(".roomid").val("");
+                                        $(".content p").text("加载错误!");
                                     }
                                 }
                             });
                         } else {
                             alert("线程\"live_room_data\"GET错误\n错误信息:"+live_room_data.message)
                             $(".roomid").val("");
+                            $(".content p").text("加载错误!");
                         }
                     }
                 });

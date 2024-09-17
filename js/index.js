@@ -43,5 +43,6 @@ if (cookie_value("DedeUserID") == false) {
             $(".clock").text(time);
             setTimeout(clock,1000)
         },0)
+        //===
     })
 }
