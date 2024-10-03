@@ -2,6 +2,11 @@
     margin: 0px;
     padding: 0px;
     font-size: 12px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+}
+*::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
 }
 html,body{
     background: #654ea3;  /* fallback for old browsers */
@@ -20,9 +25,7 @@ P{
     position: relative;
     word-wrap: break-word;
     text-align: center;
-    justify-content: center;
     align-items: center;
-    text-align: center;
     overflow: auto;
 }
 .top_bar{
@@ -33,6 +36,29 @@ P{
     width: 100%;
     height: 50px;
     background-image: linear-gradient(#00000080,#00000000);
+}
+.push_barrage_div{
+    display: flex;
+    position: relative;
+    margin: 0px auto !important;
+}
+.push_barrage{
+    display: flex;
+    position: relative;
+    margin: 0px 0px 0px auto;
+    border: none;
+    color: #ffffffff;
+    background: #00000050;
+    outline: none;
+    padding: 5px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+.push_barrage::-webkit-input-placeholder {
+    color: #ffffffff;
 }
 .config{
     cursor: pointer;
@@ -64,7 +90,7 @@ P{
 .config_value p input{
     display: flex;
     position: relative;
-    width: 15px;
+    width: 30px;
     background: none;
     border: none;
     outline: none;
@@ -117,17 +143,17 @@ P{
     -ms-border-radius: 50px;
     -o-border-radius: 50px;
 }
-.进场事件,.弹幕事件,.礼物事件{
+.进场事件,.弹幕事件,.礼物事件,.SC或上舰事件{
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 30%;
+    width: 25%;
     margin: 10px 0px;
     box-shadow: 0px 0px 3px;
     color: #ffffffff;
-    overflow: auto;
+    overflow: auto;/*"#EDF5FF""#2A60B2""#405D85""#3171D2""#7497CD"*/
 }
-.INTERACT_WORD,.ENTRY_EFFECT,.DANMU_MSG{
+.INTERACT_WORD,.ENTRY_EFFECT,.DANMU_MSG,.SEND_GIFT,.SUPER_CHAT_MESSAGE{
     display: flex;
     position: relative;
     margin: 10px;
@@ -154,6 +180,12 @@ P{
     -moz-border-radius: 5px 5px 0px 0px;
     -ms-border-radius: 5px 5px 0px 0px;
     -o-border-radius: 5px 5px 0px 0px;
+}
+.price{
+    display: flex;
+    position: relative;
+    color: #000;
+    margin-right: 10px;
 }
 .medal{
     display: flex;
@@ -186,6 +218,7 @@ P{
     position: relative;
     align-items: center;
     margin-left: 5px;
+    margin-right: auto;
     color: #000000;
 }
 .time{
@@ -193,7 +226,6 @@ P{
     position: relative;
     color: #000000;
     align-items: center;
-    margin-left: auto;
     font-size: 9px;
 }
 .text{
