@@ -3,12 +3,17 @@ if (cookie_value("DedeUserID") == false) {
     window.location.replace("/login.html")
 } else {
     $(function () {
+        background_image()
         //===获取登录用户头像和名称===
         let User_Data = user_data(cookie_value("DedeUserID"))
-        $(".top_bar img").attr({
-            src: User_Data.data.face,
-            title: User_Data.data.name
-        });
+        if (User_Data.code == -352) {
+            lift_risk_control(User_Data.data.v_voucher)
+        } else {
+            $(".top_bar img").attr({
+                src: User_Data.data.face,
+                title: User_Data.data.name
+            });
+        }
         //===
 
         //===退出登录===

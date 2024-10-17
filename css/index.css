@@ -3,9 +3,7 @@
     padding: 0px;
 }
 html,body{
-    background: #654ea3;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #eaafc8, #654ea3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+    background: #66ccff;  /* fallback for old browsers */
 }
 body{
     display: flex;
@@ -55,14 +53,21 @@ body{
     width: 70%;
     padding: 5px 0px;
     box-shadow: 0px 0px 3px;
+    background: #ffffff88;
+    backdrop-filter: blur(6px);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
 .module a{
     display: flex;
     position: relative;
     margin: 5px;
-    color: #ffffffff;
+    color: #000000;
     text-decoration: none;
 }
 .module a:hover{
-    color: #00aaffff;
+    color: #66ccff;
 }

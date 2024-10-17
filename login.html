@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B站API调用|登录</title>
+    <title>登录|B站API调用</title>
     <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
     <div class="login">
-        <p></p>
-        <div class="qr"></div>
+        <p class="qr_me"></p>
+        <div class="qrcode"></div>
+        <p class="login_text_1">哔哩哔哩客户端扫码登录或者</p>
+        <a id="login_url" class="login_text" href="https://passport.bilibili.com/login" target="_parent" style="color: #66ccff; text-decoration: none;">前往哔哩哔哩登录</a>
+        <p class="login_text">后刷新当前页面</p>
     </div>
+    <a class="pid_and_p" target="_blank" style="display: flex; position: fixed; bottom: 10px; left: 10px; color: #ffffff88 ; text-decoration: none;"></a>
 </body>
     <script src="/lib/jquery-3.7.1.js"></script>
     <script src="/lib/jquery-migrate-1.4.1.js"></script>

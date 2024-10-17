@@ -15,7 +15,8 @@ if (cookie_value("DedeUserID") == false) {
             "进场事件显示数量":50,
             "进场事件_特效_显示数量":50,
             "弹幕事件显示数量":50,
-            "礼物事件显示数量":50
+            "礼物事件显示数量":50,
+            "alpha":88,//透明度(16进制)
         }
         //===
 
@@ -59,9 +60,7 @@ if (cookie_value("DedeUserID") == false) {
                     })
                 } else {
                     $("html,body").css({
-                        "background": "#654ea3;  /* fallback for old browsers",
-                        "background": "-webkit-linear-gradient(to left, #eaafc8, #654ea3);",
-                        "background": "linear-gradient(to left, #eaafc8, #654ea3);"
+                        "background": "#66ccff;",
                     });
                 }
                 $(".是否显示背景").text("是否显示背景:是");
@@ -228,11 +227,11 @@ if (cookie_value("DedeUserID") == false) {
                 <div class=\"DANMU_MSG\">\
                     <img class=\"face\" src=\"/img/akari.jpg\" onerror=\"this.src ='/img/akari.jpg'\" loading=\"lazy\" alt=\"\">\
                     <div class=\"data\">\
-                        <div class=\"user_data\">\
+                        <div class=\"user_data\" style=\"background: #ffffff"+config.alpha+";\">\
                             <p class=\"name\">系统</p>\
                             <p class=\"time\">"+time+"</p>\
                         </div>\
-                        <p class=\"text\" style=\"background: #919298;\">连接成功</p>\
+                        <p class=\"text\" style=\"background: #919298"+config.alpha+";\">连接成功</p>\
                     </div>\
                 </div>\
                 "
@@ -275,10 +274,10 @@ if (cookie_value("DedeUserID") == false) {
             }
             if (medal != null) {
                 medal_display = "display: flex;"
-                medal_color = "#"+JSON.data.uinfo.medal.color.toString(16).padStart(6,"0")
-                medal_color_border = "#"+JSON.data.uinfo.medal.color_border.toString(16).padStart(6,"0")
-                medal_color_end = "#"+JSON.data.uinfo.medal.color_end.toString(16).padStart(6,"0")
-                medal_color_start = "#"+JSON.data.uinfo.medal.color_start.toString(16).padStart(6,"0")
+                medal_color = "#"+JSON.data.uinfo.medal.color.toString(16).padStart(6,"0")+config.alpha
+                medal_color_border = "#"+JSON.data.uinfo.medal.color_border.toString(16).padStart(6,"0")+config.alpha
+                medal_color_end = "#"+JSON.data.uinfo.medal.color_end.toString(16).padStart(6,"0")+config.alpha
+                medal_color_start = "#"+JSON.data.uinfo.medal.color_start.toString(16).padStart(6,"0")+config.alpha
                 medal_level = JSON.data.uinfo.medal.level
                 medal_name = JSON.data.uinfo.medal.name
                 medal_guard_icon = JSON.data.uinfo.medal.guard_icon
@@ -290,7 +289,7 @@ if (cookie_value("DedeUserID") == false) {
                 }
             } else {
                 medal_display = "display: none;"
-                medal_color = "#919298"
+                medal_color = "#919298"+config.alpha
             }
             if (msg_type == 1) {
                 text = name+"进入直播间"
@@ -301,7 +300,7 @@ if (cookie_value("DedeUserID") == false) {
             <div class=\"INTERACT_WORD\">\
                 <img class=\"face\" src=\""+face+"\" style=\""+face_display+"\" onerror=\"this.src ='/img/akari.jpg'\" loading=\"lazy\" alt=\"\">\
                 <div class=\"data\">\
-                    <div class=\"user_data\">\
+                    <div class=\"user_data\" style=\"background: #ffffff"+config.alpha+";\">\
                         <div class=\"medal\" style=\""+medal_display+"border: solid 1px "+medal_color_border+";background: linear-gradient(to right, "+medal_color_start+", "+medal_color_end+");\">\
                             <img class=\"guard_icon\" src=\""+medal_guard_icon+"\" style=\""+medal_guard_icon_display+"\" alt=\"\">\
                             <p class=\"medal_name\">"+medal_name+"</p>\
@@ -359,10 +358,10 @@ if (cookie_value("DedeUserID") == false) {
             }
             if (medal != null) {
                 medal_display = "display: flex;"
-                medal_color = "#"+JSON.data.uinfo.medal.color.toString(16).padStart(6,"0")
-                medal_color_border = "#"+JSON.data.uinfo.medal.color_border.toString(16).padStart(6,"0")
-                medal_color_end = "#"+JSON.data.uinfo.medal.color_end.toString(16).padStart(6,"0")
-                medal_color_start = "#"+JSON.data.uinfo.medal.color_start.toString(16).padStart(6,"0")
+                medal_color = "#"+JSON.data.uinfo.medal.color.toString(16).padStart(6,"0")+config.alpha
+                medal_color_border = "#"+JSON.data.uinfo.medal.color_border.toString(16).padStart(6,"0")+config.alpha
+                medal_color_end = "#"+JSON.data.uinfo.medal.color_end.toString(16).padStart(6,"0")+config.alpha
+                medal_color_start = "#"+JSON.data.uinfo.medal.color_start.toString(16).padStart(6,"0")+config.alpha
                 medal_level = JSON.data.uinfo.medal.level
                 medal_name = JSON.data.uinfo.medal.name
                 medal_guard_icon = JSON.data.uinfo.medal.guard_icon
@@ -374,13 +373,13 @@ if (cookie_value("DedeUserID") == false) {
                 }
             } else {
                 medal_display = "display: none;"
-                medal_color = "#919298"
+                medal_color = "#919298"+config.alpha
             }
             let html = "\
             <div class=\"ENTRY_EFFECT\">\
                 <img class=\"face\" src=\""+face+"\" style=\""+face_display+"\" onerror=\"this.src ='/img/akari.jpg'\" loading=\"lazy\" alt=\"\">\
                 <div class=\"data\">\
-                    <div class=\"user_data\">\
+                    <div class=\"user_data\" style=\"background: #ffffff"+config.alpha+";\">\
                         <div class=\"medal\" style=\""+medal_display+"border: solid 1px "+medal_color_border+";background: linear-gradient(to right, "+medal_color_start+", "+medal_color_end+");\">\
                             <img class=\"guard_icon\" src=\""+medal_guard_icon+"\" style=\""+medal_guard_icon_display+"\" alt=\"\">\
                             <p class=\"medal_name\">"+medal_name+"</p>\
@@ -438,10 +437,10 @@ if (cookie_value("DedeUserID") == false) {
             }
             if (medal != null) {
                 medal_display = "display: flex;"
-                medal_color = "#"+JSON.info[0][15].user.medal.color.toString(16).padStart(6,"0")
-                medal_color_border = "#"+JSON.info[0][15].user.medal.color_border.toString(16).padStart(6,"0")
-                medal_color_end = "#"+JSON.info[0][15].user.medal.color_end.toString(16).padStart(6,"0")
-                medal_color_start = "#"+JSON.info[0][15].user.medal.color_start.toString(16).padStart(6,"0")
+                medal_color = "#"+JSON.info[0][15].user.medal.color.toString(16).padStart(6,"0")+config.alpha
+                medal_color_border = "#"+JSON.info[0][15].user.medal.color_border.toString(16).padStart(6,"0")+config.alpha
+                medal_color_end = "#"+JSON.info[0][15].user.medal.color_end.toString(16).padStart(6,"0")+config.alpha
+                medal_color_start = "#"+JSON.info[0][15].user.medal.color_start.toString(16).padStart(6,"0")+config.alpha
                 medal_level = JSON.info[0][15].user.medal.level
                 medal_name = JSON.info[0][15].user.medal.name
                 medal_guard_icon = JSON.info[0][15].user.medal.guard_icon
@@ -453,13 +452,13 @@ if (cookie_value("DedeUserID") == false) {
                 }
             } else {
                 medal_display = "display: none;"
-                medal_color = "#919298"
+                medal_color = "#919298"+config.alpha
             }
             let html = "\
             <div class=\"DANMU_MSG\">\
                 <img class=\"face\" src=\""+face+"\" style=\""+face_display+"\" onerror=\"this.src ='/img/akari.jpg'\" loading=\"lazy\" alt=\"\">\
                 <div class=\"data\">\
-                    <div class=\"user_data\">\
+                    <div class=\"user_data\" style=\"background: #ffffff"+config.alpha+";\">\
                         <div class=\"medal\" style=\""+medal_display+"border: solid 1px "+medal_color_border+";background: linear-gradient(to right, "+medal_color_start+", "+medal_color_end+");\">\
                             <img class=\"guard_icon\" src=\""+medal_guard_icon+"\" style=\""+medal_guard_icon_display+"\" alt=\"\">\
                             <p class=\"medal_name\">"+medal_name+"</p>\
@@ -523,10 +522,10 @@ if (cookie_value("DedeUserID") == false) {
             }
             if (medal != null) {
                 medal_display = "display: flex;"
-                medal_color = "#"+JSON.data.sender_uinfo.medal.color.toString(16).padStart(6,"0")
-                medal_color_border = "#"+JSON.data.sender_uinfo.medal.color_border.toString(16).padStart(6,"0")
-                medal_color_end = "#"+JSON.data.sender_uinfo.medal.color_end.toString(16).padStart(6,"0")
-                medal_color_start = "#"+JSON.data.sender_uinfo.medal.color_start.toString(16).padStart(6,"0")
+                medal_color = "#"+JSON.data.sender_uinfo.medal.color.toString(16).padStart(6,"0")+config.alpha
+                medal_color_border = "#"+JSON.data.sender_uinfo.medal.color_border.toString(16).padStart(6,"0")+config.alpha
+                medal_color_end = "#"+JSON.data.sender_uinfo.medal.color_end.toString(16).padStart(6,"0")+config.alpha
+                medal_color_start = "#"+JSON.data.sender_uinfo.medal.color_start.toString(16).padStart(6,"0")+config.alpha
                 medal_level = JSON.data.sender_uinfo.medal.level
                 medal_name = JSON.data.sender_uinfo.medal.name
                 medal_guard_icon = JSON.data.sender_uinfo.medal.guard_icon
@@ -538,7 +537,7 @@ if (cookie_value("DedeUserID") == false) {
                 }
             } else {
                 medal_display = "display: none;"
-                medal_color = "#919298"
+                medal_color = "#919298"+config.alpha
             }
             if (coin_type == "gold") {
                 price_display = "display: flex;"
@@ -549,7 +548,7 @@ if (cookie_value("DedeUserID") == false) {
             <div class=\"SEND_GIFT\">\
                 <img class=\"face\" src=\""+face+"\" style=\""+face_display+"\" onerror=\"this.src ='/img/akari.jpg'\" loading=\"lazy\" alt=\"\">\
                 <div class=\"data\">\
-                    <div class=\"user_data\">\
+                    <div class=\"user_data\" style=\"background: #ffffff"+config.alpha+";\">\
                         <div class=\"medal\" style=\""+medal_display+"border: solid 1px "+medal_color_border+";background: linear-gradient(to right, "+medal_color_start+", "+medal_color_end+");\">\
                             <img class=\"guard_icon\" src=\""+medal_guard_icon+"\" style=\""+medal_guard_icon_display+"\" alt=\"\">\
                             <p class=\"medal_name\">"+medal_name+"</p>\
@@ -614,10 +613,10 @@ if (cookie_value("DedeUserID") == false) {
             }
             if (medal != null) {
                 medal_display = "display: flex;"
-                medal_color = "#"+JSON.data.sender_uinfo.medal.color.toString(16).padStart(6,"0")
-                medal_color_border = "#"+JSON.data.sender_uinfo.medal.color_border.toString(16).padStart(6,"0")
-                medal_color_end = "#"+JSON.data.sender_uinfo.medal.color_end.toString(16).padStart(6,"0")
-                medal_color_start = "#"+JSON.data.sender_uinfo.medal.color_start.toString(16).padStart(6,"0")
+                medal_color = "#"+JSON.data.sender_uinfo.medal.color.toString(16).padStart(6,"0")+config.alpha
+                medal_color_border = "#"+JSON.data.sender_uinfo.medal.color_border.toString(16).padStart(6,"0")+config.alpha
+                medal_color_end = "#"+JSON.data.sender_uinfo.medal.color_end.toString(16).padStart(6,"0")+config.alpha
+                medal_color_start = "#"+JSON.data.sender_uinfo.medal.color_start.toString(16).padStart(6,"0")+config.alpha
                 medal_level = JSON.data.sender_uinfo.medal.level
                 medal_name = JSON.data.sender_uinfo.medal.name
                 medal_guard_icon = JSON.data.sender_uinfo.medal.guard_icon
@@ -629,7 +628,7 @@ if (cookie_value("DedeUserID") == false) {
                 }
             } else {
                 medal_display = "display: none;"
-                medal_color = "#919298"
+                medal_color = "#919298"+config.alpha
             }
             if (coin_type == "gold") {
                 price_display = "display: flex;"
@@ -640,7 +639,7 @@ if (cookie_value("DedeUserID") == false) {
             <div class=\"SEND_GIFT\">\
                 <img class=\"face\" src=\""+face+"\" style=\""+face_display+"\" onerror=\"this.src ='/img/akari.jpg'\" loading=\"lazy\" alt=\"\">\
                 <div class=\"data\">\
-                    <div class=\"user_data\">\
+                    <div class=\"user_data\" style=\"background: #ffffff"+config.alpha+";\">\
                         <div class=\"medal\" style=\""+medal_display+"border: solid 1px "+medal_color_border+";background: linear-gradient(to right, "+medal_color_start+", "+medal_color_end+");\">\
                             <img class=\"guard_icon\" src=\""+medal_guard_icon+"\" style=\""+medal_guard_icon_display+"\" alt=\"\">\
                             <p class=\"medal_name\">"+medal_name+"</p>\
@@ -704,10 +703,10 @@ if (cookie_value("DedeUserID") == false) {
             }
             if (medal != null) {
                 medal_display = "display: flex;"
-                medal_color = "#"+JSON.data.uinfo.medal.color.toString(16).padStart(6,"0")
-                medal_color_border = "#"+JSON.data.uinfo.medal.color_border.toString(16).padStart(6,"0")
-                medal_color_end = "#"+JSON.data.uinfo.medal.color_end.toString(16).padStart(6,"0")
-                medal_color_start = "#"+JSON.data.uinfo.medal.color_start.toString(16).padStart(6,"0")
+                medal_color = "#"+JSON.data.uinfo.medal.color.toString(16).padStart(6,"0")+config.alpha
+                medal_color_border = "#"+JSON.data.uinfo.medal.color_border.toString(16).padStart(6,"0")+config.alpha
+                medal_color_end = "#"+JSON.data.uinfo.medal.color_end.toString(16).padStart(6,"0")+config.alpha
+                medal_color_start = "#"+JSON.data.uinfo.medal.color_start.toString(16).padStart(6,"0")+config.alpha
                 medal_level = JSON.data.uinfo.medal.level
                 medal_name = JSON.data.uinfo.medal.name
                 medal_guard_icon = JSON.data.uinfo.medal.guard_icon
@@ -719,13 +718,13 @@ if (cookie_value("DedeUserID") == false) {
                 }
             } else {
                 medal_display = "display: none;"
-                medal_color = "#919298"//"#2A60B2""#405D85""#3171D2""#7497CD"
+                medal_color = "#919298"+config.alpha//"#2A60B2""#405D85""#3171D2""#7497CD"
             }
             let html = "\
             <div class=\"SUPER_CHAT_MESSAGE\">\
                 <img class=\"face\" src=\""+face+"\" style=\""+face_display+"\" onerror=\"this.src ='/img/akari.jpg'\" loading=\"lazy\" alt=\"\">\
                 <div class=\"data\">\
-                    <div class=\"user_data\" style=\"background: "+sc_background_color+";\">\
+                    <div class=\"user_data\" style=\"background: "+sc_background_color+config.alpha+";\">\
                         <div class=\"medal\" style=\""+medal_display+"border: solid 1px "+medal_color_border+";background: linear-gradient(to right, "+medal_color_start+", "+medal_color_end+");\">\
                             <img class=\"guard_icon\" src=\""+medal_guard_icon+"\" style=\""+medal_guard_icon_display+"\" alt=\"\">\
                             <p class=\"medal_name\">"+medal_name+"</p>\

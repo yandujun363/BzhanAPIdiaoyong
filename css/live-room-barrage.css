@@ -9,9 +9,7 @@
   display: none; /* Chrome Safari */
 }
 html,body{
-    background: #654ea3;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #eaafc8, #654ea3);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #eaafc8, #654ea3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #66ccff;  /* fallback for old browsers */
 }
 body{
     display: flex;
@@ -157,6 +155,7 @@ P{
     display: flex;
     position: relative;
     margin: 10px;
+    backdrop-filter: blur(6px);
 }
 .face{
     display: flex;
@@ -190,6 +189,7 @@ P{
 .medal{
     display: flex;
     position: relative;
+    vertical-align: middle;
     margin: auto 0px;
     border-radius: 50px 0px 0px 50px;
     -webkit-border-radius: 50px 0px 0px 50px;
@@ -211,7 +211,7 @@ P{
 }
 .level{
     background: #ffffffff;
-    padding: 1px;
+    padding: 3px;
 }
 .name{
     display: flex;

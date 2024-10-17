@@ -2,7 +2,7 @@
     margin: 0px;
     padding: 0px;
 }
-body{
+html,body{
     display: flex;
     position: absolute;
     width: 100%;
