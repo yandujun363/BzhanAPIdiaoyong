@@ -55,7 +55,7 @@ if (cookie_value("DedeUserID") == false) {
                 config.是否显示背景 = 1
                 if (url_parameters_value("user_cover") !=false) {
                     $("html,body").css({
-                        "background": "url("+url_parameters_value("user_cover")+")",
+                        "background": "url("+BASE64.urlsafe_decode(url_parameters_value("user_cover"))+")",
                         "background-size": "cover"
                     })
                 } else {
@@ -121,7 +121,7 @@ if (cookie_value("DedeUserID") == false) {
 
         //===主播头像和名称以及直播间链接===
         $(".live_room_user,.live_room_user img").attr({
-            src: url_parameters_value("face").replace("http://","https://"),
+            src: BASE64.urlsafe_decode(url_parameters_value("face")).replace("http://","https://"),
             href:"https://live.bilibili.com/"+url_parameters_value("roomid"),
             title: url_parameters_value("name")+"\n直播间"+url_parameters_value("roomid")
         });
@@ -130,7 +130,7 @@ if (cookie_value("DedeUserID") == false) {
         //===背景图===
         if (url_parameters_value("user_cover") !=false) {
             $("body").css({
-                "background": "url("+url_parameters_value("user_cover")+")",
+                "background": "url("+BASE64.urlsafe_decode(url_parameters_value("user_cover"))+")",
                 "background-size": "cover"
             })
         }
@@ -149,24 +149,92 @@ if (cookie_value("DedeUserID") == false) {
         },0)
         //===
 
+        //===已开播时间===
+        if (url_parameters_value("live_status") == 1) {
+            let live_time = new Date(url_parameters_value("live_time")).getTime()
+            setTimeout(function broadcast_time () {
+                let broadcast_time_data = Date.now() - live_time
+                let days=Math.floor(broadcast_time_data/(24*3600*1000))
+                let leave1=broadcast_time_data%(24*3600*1000)
+                let hours=Math.floor(leave1/(3600*1000))
+                let leave2=leave1%(3600*1000)
+                let minutes=Math.floor(leave2/(60*1000))
+                let leave3=leave2%(60*1000)
+                let seconds=Math.round(leave3/1000)
+                setTimeout(broadcast_time,1000)
+                $(".broadcast_time").text("已开播时间："+days+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒");
+            },0)
+        } else {
+            $(".broadcast_time").text("未开播");
+        }
+        //===
+
         //===使用游览器播放===
         $(".browser_play").click(function () { 
-            $.ajax({
-                type: "get",
-                url: "https://api.live.bilibili.com/room/v1/Room/playUrl",
-                data: "cid="+url_parameters_value("roomid")+"&platform=web&quality=4",
-                dataType: "json",
-                xhrFields: {
-                    withCredentials: true
-                },
-                success: function (JSON) {
-                    if (JSON.code == 0) {
-                        window.open("/live-video.html?"+encodeURI("name="+url_parameters_value("name")+"&roomid="+url_parameters_value("roomid")+"&url="+BASE64.urlsafe_encode(JSON.data.durl[0].url)))
-                    } else {
-                        alert("GET错误\n错误信息:"+JSON.message)
+            if (url_parameters_value("live_status") == 1) {
+                $.ajax({
+                    type: "get",
+                    url: "https://api.live.bilibili.com/room/v1/Room/playUrl",
+                    data: "cid="+url_parameters_value("roomid")+"&platform=web&quality=4",
+                    dataType: "json",
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    success: function (JSON) {
+                        if (JSON.code == 0) {
+                            window.open("/live-video.html?"+encodeURI("name="+url_parameters_value("name")+"&roomid="+url_parameters_value("roomid")+"&url="+BASE64.urlsafe_encode(JSON.data.durl[0].url)))
+                        } else {
+                            alert("GET错误\n错误信息:"+JSON.message)
+                        }
                     }
+                });
+            } else {
+                alert("没开播，你看啥呀")
+            }
+        });
+        //===
+
+        //===下载直播流===
+        $(".download_live_flow").click(function () {
+            if (url_parameters_value("live_status") == 1) {
+                if (confirm("确定要开始下载吗？\n不可中断哦") == true) {
+                    $.ajax({
+                        type: "get",
+                        url: "https://api.live.bilibili.com/room/v1/Room/playUrl",
+                        data: "cid="+url_parameters_value("roomid")+"&platform=web&quality=4",
+                        dataType: "json",
+                        xhrFields: {
+                            withCredentials: true
+                        },
+                        success: function (JSON) {
+                            if (JSON.code == 0) {
+                                const fileStream = streamSaver.createWriteStream("【直播回放】"+url_parameters_value("title")+" "+url_parameters_value("live_time")+"场")
+                                $(".download_live_flow").text("正在下载下载完成前不要再次点击,也不要刷新页面，把这个页面挂着，不要让其休眠)")
+                                fetch(JSON.data.durl[0].url)
+                                .then(res => {
+                                    const readableStream = res.body
+                                    if (window.WritableStream && readableStream.pipeTo) {
+                                    return readableStream.pipeTo(fileStream)
+                                        .then(() => $(".download_live_flow").text("下载完成"))
+                                    }
+                                    window.writer = fileStream.getWriter()
+                                    const reader = res.body.getReader()
+                                    const pump = () => reader.read()
+                                    .then(res => res.done
+                                        ? writer.close()
+                                        : writer.write(res.value).then(pump)
+                                    )
+                                    pump()
+                                })
+                            } else {
+                                alert("GET错误\n错误信息:"+JSON.message)
+                            }
+                        }
+                    });
                 }
-            });
+            } else {
+                alert("没开播，你下啥呀")
+            }
         });
         //===
 

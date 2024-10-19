@@ -155,7 +155,6 @@ P{
     display: flex;
     position: relative;
     margin: 10px;
-    backdrop-filter: blur(6px);
 }
 .face{
     display: flex;
@@ -168,6 +167,12 @@ P{
     flex-direction: column;
     margin-left: 5px;
     overflow: auto;
+    backdrop-filter: blur(6px);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
 .user_data{
     display: flex;
