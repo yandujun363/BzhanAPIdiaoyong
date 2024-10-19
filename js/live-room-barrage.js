@@ -208,7 +208,7 @@ if (cookie_value("DedeUserID") == false) {
                         },
                         success: function (JSON) {
                             if (JSON.code == 0) {
-                                const fileStream = streamSaver.createWriteStream("【直播回放】"+url_parameters_value("title")+" "+url_parameters_value("live_time")+"场")
+                                const fileStream = streamSaver.createWriteStream("【直播回放】"+url_parameters_value("title")+" "+url_parameters_value("live_time")+"场.flv")
                                 $(".download_live_flow").text("正在下载下载完成前不要再次点击,也不要刷新页面，把这个页面挂着，不要让其休眠)")
                                 fetch(JSON.data.durl[0].url)
                                 .then(res => {
